@@ -82,7 +82,7 @@ rectangles.forEach(rect => {
   ctx.rect(1030,750,40,40); //door house 2
   ctx.rect(1490,790,40,45); //door pokestore
   ctx.rect(1075,1080,40,45); //door pokestop
-  ctx.rect(1500,450,40,40); //door gym
+  ctx.rect(1485,430,50,40); //door gym
 
 
 
@@ -159,11 +159,32 @@ function doors(){
   ) { //door house 2
     console.log("door house 2");
     location.replace("index_house_2.html");
-    
-  
+}
+if (player_pos.x + playerSize.width >= 1490 && //from left  
+  player_pos.x <= 1490 + 40 && //from right
+  player_pos.y + playerSize.height >= 790 && //from above
+  player_pos.y <= 790 + 45 //from under
+) { //door pokestore
+  console.log("door pokestore");
+  location.replace("index_pstore.html");
+}
+if (player_pos.x + playerSize.width >= 1075 && //from left
+  player_pos.x <= 1075 + 40 && //from right
+  player_pos.y + playerSize.height >= 1080 && //from above
+  player_pos.y <= 1080 + 45 //from under
+) { //door pokestop
+  console.log("door pokestop");
+  location.replace("index_pstop.html");
+}
+if (player_pos.x + playerSize.width >= 1485 && //from left
+  player_pos.x <= 1485 + 50 && //from right
+  player_pos.y + playerSize.height >= 430 && //from above
+  player_pos.y <= 430 + 40 //from under
+) { //door gym
+  console.log("door gym");
+  location.replace("index_gym.html");
 }
 }
-  
 /*function checkCollision() {
   let collided = false;
 

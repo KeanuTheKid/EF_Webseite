@@ -1,0 +1,16 @@
+div#box
+{
+    width: 100px;
+    height: 100px;
+    background-color: #00FF00;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+}
+
+button#emcee
+{
+    position: relative;
+    z-index: 2;   
+}

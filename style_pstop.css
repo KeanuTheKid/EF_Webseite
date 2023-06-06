@@ -31,7 +31,7 @@ body {
 }
 
 #myCanvas{
-    background-image: url("assets/map_house_1.png");
+    background-image: url("assets/map_pstop.png");
     background-repeat: no-repeat;
     background-size: 696px 504px;
     margin: 0;

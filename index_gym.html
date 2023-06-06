@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gym Closed</title>
+    <style>
+        .big-text {
+            font-size: 48px;
+            text-align: center;
+            margin-top: 200px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            position: absolute;
+            transition: transform 0.3s;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const button = document.querySelector(".btn");
+            const btnContainer = document.querySelector(".btn-container");
+            const maxDistance = 100;
+
+            btnContainer.addEventListener("mousemove", function(event) {
+                const buttonRect = button.getBoundingClientRect();
+                const containerRect = btnContainer.getBoundingClientRect();
+
+                const buttonCenterX = buttonRect.left + buttonRect.width / 2 - containerRect.left;
+                const buttonCenterY = buttonRect.top + buttonRect.height / 2 - containerRect.top;
+
+                const mouseX = event.clientX - containerRect.left;
+                const mouseY = event.clientY - containerRect.top;
+
+                const dx = mouseX - buttonCenterX;
+                const dy = mouseY - buttonCenterY;
+
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const proximity = Math.max(0, maxDistance - distance);
+
+                const angle = Math.atan2(dy, dx);
+                const offsetX = Math.cos(angle) * proximity * 5;
+                const offsetY = Math.sin(angle) * proximity * 5;
+
+                button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 class="big-text">Gym is closed</h1>
+    <div class="btn-container">
+        <button class="btn" onclick="location.href='index.html'">Go Back to Index</button>
+    </div>
+</body>
+</html>

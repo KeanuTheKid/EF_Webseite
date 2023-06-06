@@ -28,34 +28,13 @@ let playerSize = {
 
 
 const rectangles = [
-  //{x:280,y:166,width:1450,height:1100},//worldborder
-  {x:280,y:166,width:500,height:40,id:'fence_1'},//fence(boarder)
-  {x:380,y:266,width:400,height:430,id:'fence_2'},//fence(trees)
-  {x:990,y:356,width:210,height:140,id:'house_1'},//house top 
-  {x:990,y:646,width:210,height:140,id:'house_2'},//house bottom
-  {x:1400,y:670,width:165,height:160,id:'pstore'},//pokestore
-  {x:990,y:940,width:210,height:180,id:'pstop'},//pokestop
-  {x:1360,y:256,width:245,height:180,id:'gym0'},//gym0
-  {x:1470,y:420,width:75,height:40,id:'gym1'},//gym1
-  {x:450,y:1080,width:250,height:210,id:'lake'},//lake
-  {x:1200,y:630,width:550,height:30,id:'fence_3'},//fence(no trees)
-  {x:829,y:665,width:35,height:40,id:'sign'},//sign(red)
-  {x:1325,y:400,width:35,height:50,id:'sign1'},//sign(gym)
-  {x:290,y:956,width:160,height:80,id:'trees_1'},//trees(bottom)
-  {x:1000,y:156,width:150,height:50,id:'trees_2'},//trees(top)
-  {x:500,y:1000,width:75,height:80,id:'tree'},//tree
-  {x:785,y:628,width:40,height:35,id:'b1'},//bush(left,4)
-  {x:785,y:545,width:40,height:35,id:'b2'},//bush(left,3)
-  {x:785,y:462,width:40,height:35,id:'b3'},//bush(left,2)
-  {x:785,y:379,width:40,height:35,id:'b4'},//bush(left,1)
-  {x:785,y:296,width:40,height:35,id:'b5'},//bush(left,0)
-  {x:950,y:379,width:40,height:35,id:'b6'},//bush(right,0)
-  {x:950,y:462,width:40,height:35,id:'b7'},//bush(right,1)
-  {x:950,y:669,width:40,height:35,id:'b8'},//bush(right,2)
-  {x:950,y:752,width:40,height:35,id:'b9'},//bush(right,3)
-  {x:1119,y:500,width:680,height:40,id:'b10'},//bushes + hill
-  {x:995,y:770,width:35,height:35,id:'b11'},//pot(left)
-  {x:1075,y:770,width:120,height:35,id:'b12'},//pot(right)
+  {x:0,y:110,width:700,height:40,id:'wall'},//wall(boarder)
+  {x:555,y:150,width:150,height:40,id:'table'},//shelf
+  {x:280,y:240,width:140,height:70,id:'c1'},//table
+  {x:290,y:340,width:50,height:40,id:'c2'},//chair 1
+  {x:360,y:340,width:50,height:40,id:'c3'},//chair 2
+  {x:10,y:440,width:60,height:50,id:'b11'},//pot(left)
+  {x:630,y:440,width:60,height:50,id:'b12'},//pot(right)
 
 
 
@@ -78,11 +57,7 @@ rectangles.forEach(rect => {
   ctx.beginPath()
   ctx.strokeStyle = "blue"
   ctx.lineWidth = "1"
-  ctx.rect(1030,460,40,40); //door house 1
-  ctx.rect(1030,750,40,40); //door house 2
-  ctx.rect(1490,790,40,45); //door pokestore
-  ctx.rect(1075,1080,40,45); //door pokestop
-  ctx.rect(1500,450,40,40); //door gym
+  ctx.rect(260,450,110,60); //door house 1
 
 
 
@@ -143,23 +118,19 @@ function checkCollision() {
   });
 }
 function doors(){
-  if (player_pos.x + playerSize.width >= 1030 && //from left
-    player_pos.x <= 1030 + 40 && //from right
-    player_pos.y + playerSize.height >= 460 && //from above
-    player_pos.y <= 460 + 40 //from under
+  if (player_pos.x + playerSize.width >= 260 && //from left
+    player_pos.x <= 260 + 110 && //from right
+    player_pos.y + playerSize.height >= 450 && //from above
+    player_pos.y <= 450 + 60 //from under
   ) { //door house 1
     console.log("door house 1");
+    location.replace("index.html");
   }
-  if (player_pos.x + playerSize.width >= 1030 && //from left
-    player_pos.x <= 1030 + 40 && //from right
-    player_pos.y + playerSize.height >= 750 && //from above
-    player_pos.y <= 750 + 40 //from under
-  ) { //door house 2
-    console.log("door house 2");
-    
+  
+
   
 }
-}
+
   
 /*function checkCollision() {
   let collided = false;
