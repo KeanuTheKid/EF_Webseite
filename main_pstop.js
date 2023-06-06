@@ -3,8 +3,8 @@ const can = document.getElementById("myCanvas")
 let ctx = can.getContext("2d")
 const player = document.querySelector('.player')
 const can_pos = {
-    x:parseInt(-567),
-    y:parseInt(-42)
+    x:parseInt(-507),
+    y:parseInt(-50)
 } 
 const player_vel = {
     x: 0,
@@ -29,15 +29,12 @@ let playerSize = {
 
 const rectangles = [
   //{x:280,y:166,width:1450,height:1100},//worldborder
-  {x:0,y:110,width:380,height:40,id:'wall'},//wall(boarder)
-  {x:320,y:256,width:110,height:100,id:'table'},//table
-  {x:250,y:266,width:50,height:40,id:'c1'},//chair 1
-  {x:250,y:326,width:50,height:40,id:'c2'},//chair 2
-  {x:450,y:266,width:50,height:40,id:'c3'},//chair 3
-  {x:450,y:326,width:50,height:40,id:'c4'},//chair 4
-  {x:0,y:450,width:50,height:50,id:'b11'},//pot(left)
-  {x:640,y:450,width:50,height:50,id:'b12'},//pot(right)
-
+  {x:190,y:90,width:320,height:130,id:'rezeption'},//rezeption
+  {x:520,y:336,width:85,height:100,id:'table'},//table
+  {x:520,y:280,width:80,height:50,id:'c1'},//chair 1
+  {x:660,y:336,width:50,height:100,id:'c2'},//chair 2
+  {x:510,y:95,width:50,height:50,id:'computer'},//computer
+  {x:0,y:300,width:100,height:110,id:'stairs'},//stairs
 
 
 ] 
@@ -59,7 +56,7 @@ rectangles.forEach(rect => {
   ctx.beginPath()
   ctx.strokeStyle = "blue"
   ctx.lineWidth = "1"
-  ctx.rect(230,460,100,50); //door outside
+  ctx.rect(320,460,70,50); //door outside
 
 
 
@@ -121,10 +118,10 @@ function checkCollision() {
 }
 
 
-
+(320,460,70,50)
 function doors(){
-  if (player_pos.x + playerSize.width >= 230 && //from left
-    player_pos.x <= 230 + 100 && //from right
+  if (player_pos.x + playerSize.width >= 320 && //from left
+    player_pos.x <= 320 + 700 && //from right
     player_pos.y + playerSize.height >= 460 && //from above
     player_pos.y <= 460 + 50 //from under
   ) { //door house 1

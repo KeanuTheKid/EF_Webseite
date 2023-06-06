@@ -3,8 +3,8 @@ const can = document.getElementById("myCanvas")
 let ctx = can.getContext("2d")
 const player = document.querySelector('.player')
 const can_pos = {
-    x:parseInt(0),
-    y:parseInt(0)
+    x:parseInt(-500),
+    y:parseInt(-20)
 }
 const player_vel = {
     x: 0,

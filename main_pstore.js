@@ -29,15 +29,11 @@ let playerSize = {
 
 const rectangles = [
   //{x:280,y:166,width:1450,height:1100},//worldborder
-  {x:0,y:110,width:380,height:40,id:'wall'},//wall(boarder)
-  {x:320,y:256,width:110,height:100,id:'table'},//table
-  {x:250,y:266,width:50,height:40,id:'c1'},//chair 1
-  {x:250,y:326,width:50,height:40,id:'c2'},//chair 2
-  {x:450,y:266,width:50,height:40,id:'c3'},//chair 3
-  {x:450,y:326,width:50,height:40,id:'c4'},//chair 4
-  {x:0,y:450,width:50,height:50,id:'b11'},//pot(left)
-  {x:640,y:450,width:50,height:50,id:'b12'},//pot(right)
-
+  {x:0,y:100,width:260,height:210,id:'counter'},//counter
+  {x:450,y:240,width:120,height:190,id:'v1'},
+  {x:70,y:356,width:120,height:70,id:'v1'},
+  {x:635,y:250,width:70,height:180,id:'v2'},
+  {x:450,y:050,width:180,height:120,id:'v2'},
 
 
 ] 
@@ -59,7 +55,7 @@ rectangles.forEach(rect => {
   ctx.beginPath()
   ctx.strokeStyle = "blue"
   ctx.lineWidth = "1"
-  ctx.rect(230,460,100,50); //door outside
+  ctx.rect(240,460,100,50); //door outside
 
 
 
@@ -123,8 +119,8 @@ function checkCollision() {
 
 
 function doors(){
-  if (player_pos.x + playerSize.width >= 230 && //from left
-    player_pos.x <= 230 + 100 && //from right
+  if (player_pos.x + playerSize.width >= 240 && //from left
+    player_pos.x <= 240 + 100 && //from right
     player_pos.y + playerSize.height >= 460 && //from above
     player_pos.y <= 460 + 50 //from under
   ) { //door house 1
