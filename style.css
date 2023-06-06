@@ -2,7 +2,7 @@ body {
     background-color:bisque;
 }
 .player{
-    width: 40px;
+    width: 35px;
     height: 50px;
     background-image: url("assets/player_front.png");
     background-size: 120px 50px;
@@ -37,7 +37,4 @@ body {
     margin: 0;
     overflow: hidden;
     z-index: -2;
-    
-    
-
 }

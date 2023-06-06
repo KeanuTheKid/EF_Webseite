@@ -6,7 +6,11 @@
 - [x] Player bewegen ---> Map bewegen
 - [x] Rectangles für map_draussen zeichnen
 - [x] Collision Checken
-- [ ] Mit CheckCollision() Wände einfügen
+- [x] Mit CheckCollision() Wände einfügen
+- [ ] scale fixen
+-> rect *1.125 macht 4k zu 1080p, playerposition ist anders...
+-> türen verschieben
+
 ### FIXXXXXXX
 - [x] Auf andere html wechseln
 - [x] Restliche Rectangles zeichnen
