@@ -1,15 +1,15 @@
 # To-Do-WEBSEITE
 
-- [ x ] Map und Player 
-- [ x ] Player animieren
-- [ x ] Canvas anlegen
-- [ x ] Player bewegen ---> Map bewegen
-- [ x ] Rectangles für map_draussen zeichnen
-- [ x ] Collision Checken
+- [x] Map und Player 
+- [x] Player animieren
+- [x] Canvas anlegen
+- [x] Player bewegen ---> Map bewegen
+- [x] Rectangles für map_draussen zeichnen
+- [x] Collision Checken
 - [ ] Mit CheckCollision() Wände einfügen
 ### FIXXXXXXX
-- [ x ] Auf andere html wechseln
-- [ x ] Restliche Rectangles zeichnen
+- [x] Auf andere html wechseln
+- [x] Restliche Rectangles zeichnen
 - [ ] Wasser animieren
 - [ ] Personalflavour einbauen
 #### Ideen:
