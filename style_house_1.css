@@ -1,0 +1,43 @@
+body {
+    background-color:bisque;
+}
+.player{
+    width: 40px;
+    height: 50px;
+    background-image: url("assets/player_front.png");
+    background-size: 120px 50px;
+    background-position: -40px 0;
+    position: absolute;
+    background-repeat: no-repeat;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.player.active{
+    animation: .2s walk linear infinite;
+}
+
+@keyframes walk{
+    0%, 32%{
+        background-position: 0 0;
+    }
+    33%, 65%{
+        background-position: -40px 0;
+    }
+    66%, 100%{
+        background-position: -80px 0;
+    }
+}
+
+#myCanvas{
+    background-image: url("assets/map_house_1.png");
+    background-repeat: no-repeat;
+    background-size:contain ; 
+    margin: 0;
+    overflow: hidden;
+    z-index: -2;
+    
+    
+
+}
