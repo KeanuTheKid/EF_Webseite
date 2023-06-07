@@ -80,11 +80,10 @@ function draw() {
   can.width = 2 * window.innerWidth;
   can.height = 2 *  window.innerHeight;
   ctx.beginPath()
-  ctx.strokeStyle = "red"
+  ctx.strokeStyle = "transparent"
   ctx.lineWidth = "0"
   ctx.fillStyle = "red";
-  ctx.rect(kesswil_x*scale, kesswil_y*scale, 40*scale, 40*scale); //kesswil
-  ctx.rect(imagex_k*scale, imagey_k*scale, 40*scale, 40*scale); //kesswil
+  
   rectangles.forEach(rect => {
     ctx.rect(rect.x*scale, rect.y*scale, rect.width*scale, rect.height*scale);
 
