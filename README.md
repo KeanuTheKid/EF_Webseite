@@ -1,5 +1,6 @@
 # Anleitung 
 - index.html ist die Hauptdatei !!!!!!!!!!!
+- !!! Falls Boarders nicht richtig platziert sind, ist "scale" nicht richtig eingestellt. Falls nötig selber anpassen. 
 - Zum bewegen W,A,S,D nutzen
 - Alle Türen sind nutzbar
 ## Aktions Orte
