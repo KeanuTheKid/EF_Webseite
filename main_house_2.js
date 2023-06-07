@@ -7,6 +7,10 @@ else {
   scale = 1;
 }
 
+const BoardImage = new Image();
+BoardImage.src = 'assets/board.png';
+const BookImage = new Image();
+BookImage.src = 'assets/book.jpg';
 
 const can = document.getElementById("myCanvas")
 let ctx = can.getContext("2d")
@@ -58,9 +62,10 @@ function draw() {
   can.width = 2 * window.innerWidth;
   can.height = 2 *  window.innerHeight;
   ctx.beginPath()
-  ctx.strokeStyle = "transparent"
+  ctx.strokeStyle = "red"
   ctx.lineWidth = "3"
-
+  ctx.rect(book_x, book_y, book_w, book_h);
+  ctx.rect(imagex_bk, imagey_bk, imagew_bk, imageh_bk);
   rectangles.forEach(rect => {
     ctx.rect(rect.x*scale, rect.y*scale, rect.width*scale, rect.height*scale);
 
@@ -78,12 +83,60 @@ function draw() {
 
   ctx.stroke()
 }
-function player_boarder() {
-  ctx.beginPath()
-  ctx.strokeStyle = "transparent"
-  ctx.lineWidth = "1"
-  ctx.rect(player_pos.x-playerSize.width/2, player_pos.y-playerSize.height/2, playerSize.width, playerSize.height);
-  ctx.stroke()
+
+
+
+//image collison
+let b_x = 250;
+let b_y = 100;
+let b_w = 190;
+let b_h= 100;
+//image 
+let imagex_b = 230;
+let imagey_b = 30;
+let imagew_b = 250;
+let imageh_b= 50;
+
+let book_x = 250;
+let book_y = 220;
+let book_w = 100;
+let book_h= 110;
+//image 
+let imagex_bk = 220;
+let imagey_bk = 185;
+let imagew_bk = 300;
+let imageh_bk= 200;
+function popup() {
+  if (
+    player_pos.x >= b_x && // from left
+    player_pos.x <= b_x + b_w && // from right
+    player_pos.y >= b_y && // from above
+    player_pos.y <= b_y + b_h // from below
+  ) {
+    ctx.beginPath();
+    ctx.strokeStyle = "transparent";
+    ctx.lineWidth = "1";
+    ctx.drawImage(BoardImage, imagex_b, imagey_b, imagew_b, imageh_b); // draw the image at (230, 300) with width 100 and height 50
+    ctx.stroke();
+  } else {
+    ctx.clearRect(imagex_b, imagey_b, imagew_b, imageh_b); // Clear the entire area occupied by the image
+  }
+  if (
+    player_pos.x >= book_x && // from left
+    player_pos.x <= book_x + book_w && // from right
+    player_pos.y >= book_y && // from above
+    player_pos.y <= book_y + book_h // from below
+    
+  ) {
+    ctx.beginPath();
+    ctx.strokeStyle = "transparent";
+    ctx.lineWidth = "1";
+    ctx.drawImage(BookImage, imagex_bk, imagey_bk, imagew_bk, imageh_bk); // draw the image at (230, 300) with width 100 and height 50
+    ctx.stroke();
+  }
+  else {
+    ctx.clearRect(imagex_bk, imagey_bk, imagew_bk, imageh_bk); // Clear the entire area occupied by the image
+  }
 }
 
 
@@ -102,14 +155,14 @@ function run() {
   };
 
   if (checkCollision()) {
-    // Reverse the player's movement upon collision
+    
     can_pos.x -= player_vel.x;
     can_pos.y -= player_vel.y;
   }
 
   doors();
   requestAnimationFrame(run);
-  player_boarder();
+  popup();
 }
 
 

@@ -7,6 +7,11 @@ else {
   scale = 1;
 }
 
+const BoardImage = new Image();
+BoardImage.src = 'assets/spider.png';
+const BookImage = new Image();
+BookImage.src = 'assets/food.jpg';
+
 
 const can = document.getElementById("myCanvas")
 let ctx = can.getContext("2d")
@@ -60,8 +65,7 @@ function draw() {
   can.height = 2 *  window.innerHeight;
   ctx.beginPath()
   ctx.strokeStyle = "transparent"
-  ctx.lineWidth = "3"
-
+  ctx.lineWidth = "1"
   rectangles.forEach(rect => {
     ctx.rect(rect.x*scale, rect.y*scale, rect.width*scale, rect.height*scale);
 
@@ -73,18 +77,59 @@ function draw() {
   ctx.strokeStyle = "transparent"
   ctx.lineWidth = "1"
   ctx.rect(230, 460, 100, 50); //door outside
-
-
-
-
   ctx.stroke()
 }
-function player_boarder() {
-  ctx.beginPath()
-  ctx.strokeStyle = "transparent"
-  ctx.lineWidth = "1"
-  ctx.rect(player_pos.x-playerSize.width/2, player_pos.y-playerSize.height/2, playerSize.width, playerSize.height);
-  ctx.stroke()
+//image collison
+let TV_x = 300;
+let TV_y = 100;
+let TV_w = 90;
+let TV_h= 100;
+//image 
+let imagex_tv = 320;
+let imagey_tv = 85;
+let imagew_tv = 50;
+let imageh_tv= 30;
+
+let food_x = 120;
+let food_y = 100;
+let food_w = 100;
+let food_h= 80;
+//image 
+let imagex_f = 220;
+let imagey_f = 185;
+let imagew_f = 300;
+let imageh_f= 200;
+function popup() {
+  if (
+    player_pos.x >= TV_x && // from left
+    player_pos.x <= TV_x + TV_w && // from right
+    player_pos.y >= TV_y && // from above
+    player_pos.y <= TV_y + TV_h // from below
+  ) {
+    ctx.beginPath();
+    ctx.strokeStyle = "transparent";
+    ctx.lineWidth = "1";
+    ctx.drawImage(BoardImage, imagex_tv, imagey_tv, imagew_tv, imageh_tv); // draw the image at (230, 300) with width 100 and height 50
+    ctx.stroke();
+  } else {
+    ctx.clearRect(imagex_tv, imagey_tv, imagew_tv, imageh_tv); // Clear the entire area occupied by the image
+  }
+  if (
+    player_pos.x >= book_x && // from left
+    player_pos.x <= book_x + book_w && // from right
+    player_pos.y >= book_y && // from above
+    player_pos.y <= book_y + book_h // from below
+    
+  ) {
+    ctx.beginPath();
+    ctx.strokeStyle = "transparent";
+    ctx.lineWidth = "1";
+    ctx.drawImage(BookImage, imagex_b, imagey_b, imagew_b, imageh_b); // draw the image at (230, 300) with width 100 and height 50
+    ctx.stroke();
+  }
+  else {
+    ctx.clearRect(imagex_b, imagey_b, imagew_b, imageh_b); // Clear the entire area occupied by the image
+  }
 }
 
 
@@ -103,23 +148,18 @@ function run() {
   };
 
   if (checkCollision()) {
-    // Reverse the player's movement upon collision
+    
     can_pos.x -= player_vel.x;
     can_pos.y -= player_vel.y;
   }
-
+  popup();
   doors();
   requestAnimationFrame(run);
-  player_boarder();
 }
 
 
 
 
-let up = 0;
-let down = 0;
-let left = 0;
-let right = 0;
 
 function checkCollision() {
   let collided = false;
@@ -132,7 +172,7 @@ function checkCollision() {
       player_pos.y <= rect.y + rect.height //from under
     ) {
       collided = true;
-      console.log("Collision: " + rect.id + "=" + rect.x + "/" + player_pos.x + "::: " + rect.y + "/" + player_pos.y + "--- " + up + down + left + right);
+      console.log("Collision: " + rect.id + "=" + rect.x + "/" + player_pos.x + "::: " + rect.y + "/" + player_pos.y + "--- " );
     } 
   });
 
@@ -169,25 +209,25 @@ window.addEventListener('keydown', function (e) {
     checkCollision()
       player_vel.y = -3
       player.style.backgroundImage = 'url("assets/player_front.png")'
-      up = 1;
+      
   }
   if (e.key == "S" || e.key == "s") {
     checkCollision()
     player_vel.y = 3
     player.style.backgroundImage = 'url("assets/player_back.png")'
-    down = 1;
+    
   }
   if (e.key == "A" || e.key == "a") {
     checkCollision()
     player_vel.x = -3
     player.style.backgroundImage = 'url("assets/player_left.png")'
-    left = 1;
+    
   }
   if (e.key == "D" || e.key == "d") {
     checkCollision()
     player_vel.x = 3
     player.style.backgroundImage = 'url("assets/player_right.png")'
-    right = 1;
+    
   }
   player.classList.add('active')
 })

@@ -118,7 +118,7 @@ function run() {
   };
 
   if (checkCollision()) {
-    // Reverse the player's movement upon collision
+    
     can_pos.x -= player_vel.x;
     can_pos.y -= player_vel.y;
   }
