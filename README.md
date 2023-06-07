@@ -1,4 +1,5 @@
 # Anleitung 
+- index.html ist die Hauptdatei !!!!!!!!!!!
 - Zum bewegen W,A,S,D nutzen
 - Alle Türen sind nutzbar
 ## Aktions Orte
