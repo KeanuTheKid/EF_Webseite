@@ -77,17 +77,10 @@ function draw() {
 
   ctx.stroke()
 }
-function player_boarder() {
-  ctx.beginPath()
-  ctx.strokeStyle = "transparent"
-  ctx.lineWidth = "0"
-  ctx.rect(player_pos.x-playerSize.width/2, player_pos.y-playerSize.height/2, playerSize.width, playerSize.height);
-  ctx.stroke()
-}
 
 
 function run() {
-  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; // Store the previous player position
+  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; 
 
   can_pos.x += player_vel.x;
   can_pos.y += player_vel.y;
@@ -108,7 +101,7 @@ function run() {
 
   doors();
   requestAnimationFrame(run);
-  //player_boarder();
+  
 }
 
 

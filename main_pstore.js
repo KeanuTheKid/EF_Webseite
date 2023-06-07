@@ -84,8 +84,7 @@ function player_boarder() {
 
 
 function run() {
-  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; // Store the previous player position
-
+  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; 
   can_pos.x += player_vel.x;
   can_pos.y += player_vel.y;
   can.style.position = 'absolute';

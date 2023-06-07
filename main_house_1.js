@@ -7,10 +7,10 @@ else {
   scale = 1;
 }
 
-const BoardImage = new Image();
-BoardImage.src = 'assets/spider.png';
-const BookImage = new Image();
-BookImage.src = 'assets/food.jpg';
+const SpiderImage = new Image();
+SpiderImage.src = 'assets/spider.png';
+const FoodImage = new Image();
+FoodImage.src = 'assets/food.jpg';
 
 
 const can = document.getElementById("myCanvas")
@@ -109,32 +109,32 @@ function popup() {
     ctx.beginPath();
     ctx.strokeStyle = "transparent";
     ctx.lineWidth = "1";
-    ctx.drawImage(BoardImage, imagex_tv, imagey_tv, imagew_tv, imageh_tv); // draw the image at (230, 300) with width 100 and height 50
+    ctx.drawImage(SpiderImage, imagex_tv, imagey_tv, imagew_tv, imageh_tv); 
     ctx.stroke();
   } else {
-    ctx.clearRect(imagex_tv, imagey_tv, imagew_tv, imageh_tv); // Clear the entire area occupied by the image
+    ctx.clearRect(imagex_tv, imagey_tv, imagew_tv, imageh_tv); 
   }
   if (
-    player_pos.x >= book_x && // from left
-    player_pos.x <= book_x + book_w && // from right
-    player_pos.y >= book_y && // from above
-    player_pos.y <= book_y + book_h // from below
+    player_pos.x >= food_x && // from left
+    player_pos.x <= food_x + food_w && // from right
+    player_pos.y >= food_y && // from above
+    player_pos.y <= food_y + food_h // from below
     
   ) {
     ctx.beginPath();
     ctx.strokeStyle = "transparent";
     ctx.lineWidth = "1";
-    ctx.drawImage(BookImage, imagex_b, imagey_b, imagew_b, imageh_b); // draw the image at (230, 300) with width 100 and height 50
+    ctx.drawImage(FoodImage, imagex_f, imagey_f, imagew_f, imageh_f); 
     ctx.stroke();
   }
   else {
-    ctx.clearRect(imagex_b, imagey_b, imagew_b, imageh_b); // Clear the entire area occupied by the image
+    ctx.clearRect(imagex_f, imagey_f, imagew_f, imageh_f); 
   }
 }
 
 
 function run() {
-  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; // Store the previous player position
+  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; 
 
   can_pos.x += player_vel.x;
   can_pos.y += player_vel.y;

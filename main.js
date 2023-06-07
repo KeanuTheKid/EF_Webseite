@@ -7,6 +7,11 @@ else {
   scale = 1;
 }
 
+const GymImage = new Image();
+GymImage.src = 'assets/gym.jpg';
+const KesswilImage = new Image();
+KesswilImage.src = 'assets/kesswil.png';
+
 
 const can = document.getElementById("myCanvas")
 let ctx = can.getContext("2d")
@@ -75,9 +80,11 @@ function draw() {
   can.width = 2 * window.innerWidth;
   can.height = 2 *  window.innerHeight;
   ctx.beginPath()
-  ctx.strokeStyle = "transparent"
+  ctx.strokeStyle = "red"
   ctx.lineWidth = "0"
   ctx.fillStyle = "red";
+  ctx.rect(kesswil_x*scale, kesswil_y*scale, 40*scale, 40*scale); //kesswil
+  ctx.rect(imagex_k*scale, imagey_k*scale, 40*scale, 40*scale); //kesswil
   rectangles.forEach(rect => {
     ctx.rect(rect.x*scale, rect.y*scale, rect.width*scale, rect.height*scale);
 
@@ -94,18 +101,64 @@ function draw() {
   ctx.rect(1490*scale, 790*scale, 40*scale, 45*scale); //door pokestore
   ctx.rect(1075*scale, 1080*scale, 40*scale, 45*scale); //door pokestop
   ctx.rect(1485*scale, 430*scale, 50*scale, 40*scale); //door gym
-
-
-
-
   ctx.stroke()
 }
 
+//image collison
+let gym_x = 1300;
+let gym_y = 380;
+let gym_w = 80;
+let gym_h= 90;
+//image 
+let imagex_gym = 1360;
+let imagey_gym = 255;
+let imagew_gym = 245;
+let imageh_gym= 180;
 
+let kesswil_x = 820;
+let kesswil_y = 655;
+let kesswil_w = 60;
+let kesswil_h= 80;
+//image 
+let imagex_k = 929;
+let imagey_k = 665;
+let imagew_k = 700;
+let imageh_k= 200;
+function popup() {
+  if (
+    player_pos.x >= gym_x*scale && // from left
+    player_pos.x <= gym_x*scale + gym_w*scale && // from right
+    player_pos.y >= gym_y*scale && // from above
+    player_pos.y <= gym_y*scale + gym_h*scale // from below
+  ) {
+    ctx.beginPath();
+    ctx.strokeStyle = "transparent";
+    ctx.lineWidth = "1";
+    ctx.drawImage(GymImage, imagex_gym*scale, imagey_gym*scale, imagew_gym*scale, imageh_gym*scale); 
+    ctx.stroke();
+  } else {
+    ctx.clearRect(imagex_gym*scale, imagey_gym*scale, imagew_gym*scale, imageh_gym*scale); 
+  }
+  if (
+    player_pos.x >= kesswil_x*scale && // from left
+    player_pos.x <= kesswil_x*scale + kesswil_w*scale && // from right
+    player_pos.y >= kesswil_y*scale && // from above
+    player_pos.y <= kesswil_y*scale + kesswil_h*scale // from below
+    
+  ) {
+    ctx.beginPath();
+    ctx.strokeStyle = "transparent";
+    ctx.lineWidth = "1";
+    ctx.drawImage(KesswilImage, imagex_k*scale, imagey_k*scale, imagew_k*scale, imageh_k*scale); 
+    ctx.stroke();
+  }
+  else {
+    ctx.clearRect(imagex_k*scale, imagey_k*scale, imagew_k*scale, imageh_k*scale); 
+}
+}
 
 function run() {
-  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; // Store the previous player position
-
+  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; 
   can_pos.x += player_vel.x;
   can_pos.y += player_vel.y;
   can.style.position = 'absolute';
@@ -122,7 +175,7 @@ function run() {
     can_pos.x -= player_vel.x;
     can_pos.y -= player_vel.y;
   }
-
+  popup();
   doors();
   requestAnimationFrame(run);
 }

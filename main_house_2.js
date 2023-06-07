@@ -62,10 +62,8 @@ function draw() {
   can.width = 2 * window.innerWidth;
   can.height = 2 *  window.innerHeight;
   ctx.beginPath()
-  ctx.strokeStyle = "red"
+  ctx.strokeStyle = "transparent"
   ctx.lineWidth = "3"
-  ctx.rect(book_x, book_y, book_w, book_h);
-  ctx.rect(imagex_bk, imagey_bk, imagew_bk, imageh_bk);
   rectangles.forEach(rect => {
     ctx.rect(rect.x*scale, rect.y*scale, rect.width*scale, rect.height*scale);
 
@@ -116,10 +114,10 @@ function popup() {
     ctx.beginPath();
     ctx.strokeStyle = "transparent";
     ctx.lineWidth = "1";
-    ctx.drawImage(BoardImage, imagex_b, imagey_b, imagew_b, imageh_b); // draw the image at (230, 300) with width 100 and height 50
+    ctx.drawImage(BoardImage, imagex_b, imagey_b, imagew_b, imageh_b); 
     ctx.stroke();
   } else {
-    ctx.clearRect(imagex_b, imagey_b, imagew_b, imageh_b); // Clear the entire area occupied by the image
+    ctx.clearRect(imagex_b, imagey_b, imagew_b, imageh_b); 
   }
   if (
     player_pos.x >= book_x && // from left
@@ -131,17 +129,17 @@ function popup() {
     ctx.beginPath();
     ctx.strokeStyle = "transparent";
     ctx.lineWidth = "1";
-    ctx.drawImage(BookImage, imagex_bk, imagey_bk, imagew_bk, imageh_bk); // draw the image at (230, 300) with width 100 and height 50
+    ctx.drawImage(BookImage, imagex_bk, imagey_bk, imagew_bk, imageh_bk); 
     ctx.stroke();
   }
   else {
-    ctx.clearRect(imagex_bk, imagey_bk, imagew_bk, imageh_bk); // Clear the entire area occupied by the image
+    ctx.clearRect(imagex_bk, imagey_bk, imagew_bk, imageh_bk); 
   }
 }
 
 
 function run() {
-  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; // Store the previous player position
+  const prevPlayerPos = { x: player_pos.x, y: player_pos.y }; 
 
   can_pos.x += player_vel.x;
   can_pos.y += player_vel.y;
