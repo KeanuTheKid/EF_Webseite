@@ -1,4 +1,4 @@
-# Anleitung
+# Anleitung 
 - Zum bewegen W,A,S,D nutzen
 - Alle Türen sind nutzbar
 ## Aktions Orte
@@ -17,20 +17,7 @@
 - Auf der linken Seite ist der richtige Ausgang
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-## To-Do-WEBSEITE
+## To-Do-WEBSEITE 1.170 Zeilen Code endstand 
 
 - [x] Map und Player 
 - [x] Player animieren
