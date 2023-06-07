@@ -37,6 +37,10 @@ let playerSize = {
 
 const rectangles = [
   //{x:280,y:166,width:1450,height:1100},//worldborder
+  {x:280,y:166,width:20,height:1100},//west
+  {x:280,y:146,width:1450,height:20},//south
+  {x:280,y:1246,width:1450,height:20},//north
+  {x:1730,y:166,width:20,height:1100},//east
   { x: 280, y: 166, width: 500, height: 40, id: 'fence_1' },//fence(boarder)
   { x: 380, y: 266, width: 400, height: 430, id: 'fence_2' },//fence(trees)
   { x: 990, y: 356, width: 210, height: 140, id: 'house_1' },//house top 
@@ -71,9 +75,9 @@ function draw() {
   can.width = 2 * window.innerWidth;
   can.height = 2 *  window.innerHeight;
   ctx.beginPath()
-  ctx.strokeStyle = "red"
-  ctx.lineWidth = "3"
-
+  ctx.strokeStyle = "transparent"
+  ctx.lineWidth = "0"
+  ctx.fillStyle = "red";
   rectangles.forEach(rect => {
     ctx.rect(rect.x*scale, rect.y*scale, rect.width*scale, rect.height*scale);
 
@@ -82,26 +86,21 @@ function draw() {
   ctx.stroke()
 
   ctx.beginPath()
-  ctx.strokeStyle = "blue"
-  ctx.lineWidth = "1"
-  ctx.rect(1030, 460, 40, 40); //door house 1
-  ctx.rect(1030, 750, 40, 40); //door house 2
-  ctx.rect(1490, 790, 40, 45); //door pokestore
-  ctx.rect(1075, 1080, 40, 45); //door pokestop
-  ctx.rect(1485, 430, 50, 40); //door gym
+  ctx.strokeStyle = "transparent"
+  ctx.lineWidth = "0"
+  ctx.fillStyle = "blue";
+  ctx.rect(1030*scale, 460*scale, 40*scale, 40*scale); //door house 1
+  ctx.rect(1030*scale, 750*scale, 40*scale, 40*scale); //door house 2
+  ctx.rect(1490*scale, 790*scale, 40*scale, 45*scale); //door pokestore
+  ctx.rect(1075*scale, 1080*scale, 40*scale, 45*scale); //door pokestop
+  ctx.rect(1485*scale, 430*scale, 50*scale, 40*scale); //door gym
 
 
 
 
   ctx.stroke()
 }
-function player_boarder() {
-  ctx.beginPath()
-  ctx.strokeStyle = "green"
-  ctx.lineWidth = "1"
-  ctx.rect(player_pos.x-playerSize.width/2, player_pos.y-playerSize.height/2, playerSize.width, playerSize.height);
-  ctx.stroke()
-}
+
 
 
 function run() {
@@ -126,7 +125,6 @@ function run() {
 
   doors();
   requestAnimationFrame(run);
-  player_boarder();
 }
 
 
@@ -142,10 +140,10 @@ function checkCollision() {
 
   rectangles.forEach(rect => {
     if (
-      player_pos.x  >= rect.x && //from left
-      player_pos.x <= rect.x + rect.width && //from right
-      player_pos.y >= rect.y && //from above
-      player_pos.y <= rect.y + rect.height //from under
+      player_pos.x  >= rect.x*scale && //from left
+      player_pos.x <= rect.x*scale + rect.width*scale && //from right
+      player_pos.y >= rect.y*scale && //from above
+      player_pos.y <= rect.y*scale + rect.height*scale //from under
     ) {
       collided = true;
       console.log("Collision: " + rect.id + "=" + rect.x + "/" + player_pos.x + "::: " + rect.y + "/" + player_pos.y + "--- " + up + down + left + right);
@@ -158,43 +156,43 @@ function checkCollision() {
 
 }
 function doors() {
-  if (player_pos.x + playerSize.width >= 1030 && //from left
-    player_pos.x <= 1030 + 40 && //from right
-    player_pos.y + playerSize.height >= 460 && //from above
-    player_pos.y <= 460 + 40 //from under
+  if (player_pos.x + playerSize.width >= 1030*scale && //from left
+    player_pos.x <= (1030 + 40)*scale && //from right
+    player_pos.y + playerSize.height >= 460*scale && //from above
+    player_pos.y <= (460 + 40)*scale //from under
   ) { //door house 1
     console.log("door house 1");
     location.replace("index_house_1.html");
 
   }
-  if (player_pos.x + playerSize.width >= 1030 && //from left
-    player_pos.x <= 1030 + 40 && //from right
-    player_pos.y + playerSize.height >= 750 && //from above
-    player_pos.y <= 750 + 40 //from under
+  if (player_pos.x + playerSize.width >= 1030*scale && //from left
+    player_pos.x <= (1030 + 40)*scale && //from right
+    player_pos.y + playerSize.height >= 750*scale && //from above
+    player_pos.y <= (750 + 40)*scale //from under
   ) { //door house 2
     console.log("door house 2");
     location.replace("index_house_2.html");
   }
-  if (player_pos.x + playerSize.width >= 1490 && //from left  
-    player_pos.x <= 1490 + 40 && //from right
-    player_pos.y + playerSize.height >= 790 && //from above
-    player_pos.y <= 790 + 45 //from under
+  if (player_pos.x + playerSize.width >= 1490*scale && //from left  
+    player_pos.x <= (1490 + 40)*scale && //from right
+    player_pos.y + playerSize.height >= 790*scale && //from above
+    player_pos.y <= (790 + 45)*scale //from under
   ) { //door pokestore
     console.log("door pokestore");
     location.replace("index_pstore.html");
   }
-  if (player_pos.x + playerSize.width >= 1075 && //from left
-    player_pos.x <= 1075 + 40 && //from right
-    player_pos.y + playerSize.height >= 1080 && //from above
-    player_pos.y <= 1080 + 45 //from under
+  if (player_pos.x + playerSize.width >= 1075*scale && //from left
+    player_pos.x <= (1075 + 40)*scale && //from right
+    player_pos.y + playerSize.height >= 1080*scale && //from above
+    player_pos.y <= (1080 + 45)*scale //from under
   ) { //door pokestop
     console.log("door pokestop");
     location.replace("index_pstop.html");
   }
-  if (player_pos.x + playerSize.width >= 1485 && //from left
-    player_pos.x <= 1485 + 50 && //from right
-    player_pos.y + playerSize.height >= 430 && //from above
-    player_pos.y <= 430 + 40 //from under
+  if (player_pos.x + playerSize.width >= 1485*scale && //from left
+    player_pos.x <= 1485*scale + 50*scale && //from right
+    player_pos.y + playerSize.height >= 430*scale && //from above
+    player_pos.y <= 430*scale + 40*scale //from under
   ) { //door gym
     console.log("door gym");
     location.replace("index_gym.html");

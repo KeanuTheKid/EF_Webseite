@@ -8,7 +8,7 @@
 - [x] Collision Checken
 - [x] Mit CheckCollision() Wände einfügen
 - [ ] scale fixen
--> rect *1.125 macht 4k zu 1080p, playerposition ist anders...
+-> rect *1.125 macht 4k zu 1080p, canposition ist anders...
 -> türen verschieben
 
 ### FIXXXXXXX
