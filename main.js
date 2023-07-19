@@ -1,7 +1,6 @@
 //4k 3840x2160 1080p 1920x1080 720p 1280x720 480p 854x480
-let scale = 1;
-if(window.screen.width == 1920 && window.screen.height == 1080){
-  scale = 1.15;
+let scale = 1.6;
+
 }
 else {
   scale = 1;
