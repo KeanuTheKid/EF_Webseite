@@ -33,7 +33,7 @@ body {
 #myCanvas{
     background-image: url("assets/map_draussen.png");
     background-repeat: no-repeat;
-    background-size:contain ; 
+    background-size: 2352px 1923px ; 
     margin: 0;
     overflow: hidden;
     z-index: -2;
