@@ -1,11 +1,6 @@
 //4k 3840x2160 1080p 1920x1080 720p 1280x720 480p 854x480
 let scale = 1.6;
 
-}
-else {
-  scale = 1;
-}
-
 const GymImage = new Image();
 GymImage.src = 'assets/gym.jpg';
 const KesswilImage = new Image();
